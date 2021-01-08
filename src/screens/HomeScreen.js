@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { View , Text, StyleSheet, Button, SafeAreaView, FlatList } from "react-native";
 import ApiManager from '../api/ApiManager'
-import ListItem from '../ListItem'
+import ListItem from '../components/ListItem'
 
 const HomeScreen =  props => {
   console.log(props);
