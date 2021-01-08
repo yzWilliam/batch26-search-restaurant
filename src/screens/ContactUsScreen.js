@@ -17,6 +17,7 @@ const ContactUsScreen =  props => {
       imageUrl={'https://i.postimg.cc/2yF9ghY8/message.png'}/>
     <Button
       title={'SEND'}
+      style={styles.button}
     />
   </SafeAreaView>
 };
@@ -27,6 +28,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     //justifyContent: 'center',
+  },
+  button: {
+    width: '80%',
+    padding: 6,
+    backgroundColor: '#4130E6',
+    borderRadius: 7,
   },
 });
 

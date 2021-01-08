@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, SafeAreaView, ActivityIndicator } from "react-native";
 import WebView from 'react-native-webview';
 
-LoadingIndicatorView = () => (
+const LoadingIndicatorView = () => (
   <ActivityIndicator color='#009b88' size='large'/>
 );
 

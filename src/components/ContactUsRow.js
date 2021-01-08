@@ -1,15 +1,34 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Linking, Platform } from 'react-native';
+
+const dialCall = () => {
+    let number = '';
+    if (Platform.OS === 'ios') {
+        number = 'telprompt:${091123456789}';
+    } else {
+        number = 'tel:${091123456789}';
+    }
+    Linking.canOpenURL(number)
+		.then((supported) => {
+			if (supported) {
+				return Linking.openURL(number)
+					.catch(() => null);
+			}
+    	});
+};
 
 const ContactUsRow = ( {title, input, imageUrl} ) => (
     <View style={styles.container}>
-        <Image source={{ uri: imageUrl }} style={styles.image} />
+        <TouchableOpacity onPress={dialCall} activeOpacity={0.7}>
+            <Image source={{ uri: imageUrl }} style={styles.image} />
+        </TouchableOpacity>
         <View style={styles.containerText}>
             <Text style={styles.title}>
                 {title}
             </Text>
             <TextInput
                 placeholder={input}
+                multiline={true}
                 style={styles.input}
             />
         </View>
@@ -42,7 +61,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     image: {
-        height: 50,
-        width: 50,
+        height: 60,
+        width: 60,
     },
 });
