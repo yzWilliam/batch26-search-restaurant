@@ -11,7 +11,7 @@ const HomeScreen =  props => {
   const getPost = async () => {
     const response = await ApiManager.get('/posts');
     setResults(response.data);
-};
+  };
 
   return <SafeAreaView style={styles.container}>
       <Text>We have found {result.length} results</Text>
