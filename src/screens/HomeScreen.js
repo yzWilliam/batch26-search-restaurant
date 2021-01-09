@@ -24,7 +24,8 @@ const HomeScreen =  props => {
             userId={item.userId}
             id={item.id}
             title={item.title}
-            body={item.body} />}
+            body={item.body}
+            navigation={props.navigation} />}
           />
       </View>
     </SafeAreaView>

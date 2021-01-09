@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ListItem = ( props ) => (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={() => props.navigation.navigate("Details")} activeOpacity={0.7} style={styles.container}>
         <Text>userId: {props.userId}</Text>
         <Text>id: {props.id}</Text>
         <Text>title: {props.title}</Text>
         <Text>body: {props.body}</Text>
-    </View>
+    </TouchableOpacity>
+
 );
 
 export default ListItem;
