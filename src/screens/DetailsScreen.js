@@ -5,7 +5,10 @@ const DetailsScreen =  props => {
   console.log(props);
   
   return <View style={styles.container}>
-      <Text> Hi </Text>
+      <Text> userId: {props.route.params.userId} </Text>
+      <Text> id: {props.route.params.id} </Text>
+      <Text> title: {props.route.params.title} </Text>
+      <Text> body: {props.route.params.body} </Text>
       </View>
 };
 

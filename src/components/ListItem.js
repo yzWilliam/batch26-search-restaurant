@@ -2,7 +2,12 @@ import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ListItem = ( props ) => (
-    <TouchableOpacity onPress={() => props.navigation.navigate("Details")} activeOpacity={0.7} style={styles.container}>
+    <TouchableOpacity onPress={() => props.navigation.navigate("Details", {
+            userId: props.userId,
+            id: props.id,
+            title: props.title,
+            body: props.body,
+        })} activeOpacity={0.7} style={styles.container}>
         <Text>userId: {props.userId}</Text>
         <Text>id: {props.id}</Text>
         <Text>title: {props.title}</Text>
