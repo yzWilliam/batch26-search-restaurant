@@ -2,7 +2,7 @@ import React from "react";
 import { View , Text, StyleSheet, Button } from "react-native";
 import MapView from 'react-native-maps';
 
-const LocationsScreen =  props => {
+const MapScreen =  props => {
   console.log(props);
   
   return <MapView
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LocationsScreen;
+export default MapScreen;

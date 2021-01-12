@@ -1,17 +1,17 @@
 import React from "react";
 import { SafeAreaView, Text, StyleSheet, Button } from "react-native";
 
-const HomeScreen = props => {
+const OrderTypeScreen = props => {
   return <SafeAreaView style={styles.container}>
-    <Text>Welcome, guest!</Text>
+    <Text>Order Type</Text>
     <Button
-      title="Start new order"
-      onPress = {()=> props.navigation.navigate("Order Type")}
+      title="Search for Locations"
+      onPress = {()=> props.navigation.navigate("Choose Location")}
     />
   </SafeAreaView>
 }
 
-export default HomeScreen;
+export default OrderTypeScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,21 +1,19 @@
 import React from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import DetailNavigator from './DetailNavigator';
-import AboutScreen from '../screens/AboutScreen';
-import ContactUsScreen from '../screens/ContactUsScreen';
-import LocationsScreen from '../screens/LocationsScreen';
-import LoginScreen from '../screens/LoginScreen';
+import { createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from "../screens/HomeScreen";
+import OrderTypeScreen from '../screens/OrderTypeScreen';
+import LocationScreen from '../screens/LocationScreen';
+import MenuScreen from '../screens/MenuScreen';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 const HomeNavigator = () => (
-  <Drawer.Navigator initialRouteName="Home">
-    <Drawer.Screen name="Home" component={DetailNavigator} />
-    <Drawer.Screen name="About" component={AboutScreen} />
-    <Drawer.Screen name="Contact Us" component={ContactUsScreen} />
-    <Drawer.Screen name="Locations" component={LocationsScreen} />
-    <Drawer.Screen name="Login" component={LoginScreen} />
-  </Drawer.Navigator>
+    <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Order Type" component={OrderTypeScreen}/>
+        <Stack.Screen name="Choose Location" component={LocationScreen}/>
+        <Stack.Screen name="Menu" component={MenuScreen}/>
+    </Stack.Navigator>
 );
 
 export default HomeNavigator;
