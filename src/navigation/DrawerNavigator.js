@@ -4,8 +4,7 @@ import HomeNavigator from './HomeNavigator';
 import LoginNavigator from './LoginNavigator';
 import OrderTypeScreen from '../screens/OrderTypeScreen';
 import FeedbackNavigator from "./FeedbackNavigator";
-import AboutScreen from '../screens/AboutScreen';
-
+import PrivacyAgreementsNavigator from './PrivacyAgreementsNavigator';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,7 +14,7 @@ const DrawerNavigator = () => (
     <Drawer.Screen name="Login" component={LoginNavigator} />
     <Drawer.Screen name="Find Locations" component={OrderTypeScreen} />
     <Drawer.Screen name="Feedback" component={FeedbackNavigator} />
-    <Drawer.Screen name="Privacy & Agreements" component={AboutScreen} />
+    <Drawer.Screen name="Privacy & Agreements" component={PrivacyAgreementsNavigator} />
   </Drawer.Navigator>
 );
 
