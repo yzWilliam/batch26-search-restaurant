@@ -2,6 +2,7 @@ import React from "react";
 import { SafeAreaView, Text, StyleSheet, Button } from "react-native";
 
 const HomeScreen = props => {
+
   return <SafeAreaView style={styles.container}>
     <Text>Welcome, guest!</Text>
     <Button
@@ -19,5 +20,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });

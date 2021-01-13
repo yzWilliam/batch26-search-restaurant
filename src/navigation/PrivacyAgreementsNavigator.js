@@ -1,10 +1,10 @@
 import React from "react";
 import { createStackNavigator} from '@react-navigation/stack';
-import PrivacyAgreementsScreen from '../screens/PrivacyAgreementsScreen';
-import UserAgreementScreen from '../screens/UserAgreementScreen';
-import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
-import OptOutGuideScreen from '../screens/OptOutGuideScreen';
-import OpenSourceLicensesScreen from '../screens/OpenSourceLicensesScreen';
+import PrivacyAgreementsScreen from '../screens/privacy-agreements/PrivacyAgreementsScreen';
+import UserAgreementScreen from '../screens/privacy-agreements/UserAgreementScreen';
+import PrivacyPolicyScreen from '../screens/privacy-agreements/PrivacyPolicyScreen';
+import OptOutGuideScreen from '../screens/privacy-agreements/OptOutGuideScreen';
+import OpenSourceLicensesScreen from '../screens/privacy-agreements/OpenSourceLicensesScreen';
 
 const Stack = createStackNavigator();
 

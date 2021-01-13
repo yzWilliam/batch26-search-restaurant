@@ -1,9 +1,9 @@
 import React from "react";
 import { createStackNavigator} from '@react-navigation/stack';
-import Feedback1Screen from '../screens/Feedback1Screen';
-import Feedback2Screen from '../screens/Feedback2Screen';
-import Feedback3Screen from '../screens/Feedback3Screen';
-import GeneralFeedbackScreen from '../screens/GeneralFeedbackScreen';
+import Feedback1Screen from '../screens/feedback/Feedback1Screen';
+import Feedback2Screen from '../screens/feedback/Feedback2Screen';
+import Feedback3Screen from '../screens/feedback/Feedback3Screen';
+import GeneralFeedbackScreen from '../screens/feedback/GeneralFeedbackScreen';
 
 const Stack = createStackNavigator();
 

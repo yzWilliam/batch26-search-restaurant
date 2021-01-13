@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import { View , Text, StyleSheet, SafeAreaView, 
-  FlatList, TextInput, ActivityIndicator } from "react-native";
+  FlatList, TextInput, ActivityIndicator, Dimensions } from "react-native";
 // import ApiManager from '../api/ApiManager'
 import ListItem from '../components/ListItem'
 import filter from 'lodash.filter';
+import { TabView, SceneMap } from 'react-native-tab-view';
+import MapView from 'react-native-maps';
 
 const LocationScreen =  props => {
   console.log(props);
@@ -14,6 +16,12 @@ const LocationScreen =  props => {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState('');
   const [fullData, setFullData] = useState([]);
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'list', title: 'List' },
+    { key: 'map', title: 'Map' },
+  ]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -66,6 +74,40 @@ const LocationScreen =  props => {
     return false;
   };
 
+  const ListRoute = () => (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => <ListItem
+            entry={item}
+            navigation={props.navigation} />}
+            keyExtractor={item => item.first}
+            ListHeaderComponent={renderHeader}
+          />
+      </View>
+    </SafeAreaView>
+  );
+
+  const MapRoute = () => (
+    <MapView
+      style={styles.container}
+      region={{
+        latitude: 37.550201,
+        longitude: -121.980827,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421}}
+      showsUserLocation={true}
+    />
+  )
+
+  const initialLayout = { width: Dimensions.get('window').width };
+
+  const renderScene = SceneMap({
+    list: ListRoute,
+    map: MapRoute,
+  });
+
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -84,19 +126,14 @@ const LocationScreen =  props => {
     );
   }
 
-  return <SafeAreaView style={styles.container}>
-      
-      <View style={styles.container}>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => <ListItem
-            entry={item}
-            navigation={props.navigation} />}
-            keyExtractor={item => item.first}
-            ListHeaderComponent={renderHeader}
-          />
-      </View>
-    </SafeAreaView>
+  return (
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={initialLayout}
+    />
+  )
 };
 
 const styles = StyleSheet.create({
@@ -111,6 +148,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     borderRadius: 20,
+  },
+  scene: {
+    flex: 1,
   },
 });
 
