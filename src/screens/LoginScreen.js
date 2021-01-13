@@ -17,6 +17,17 @@ const LoginScreen = props => {
         <Button
           title={'Login'}
           style={styles.input}
+          onPress = {()=> props.navigation.navigate("Home")}
+        />
+        <Button
+          title={'Create account'}
+          style={styles.input}
+          onPress = {()=> props.navigation.navigate("Create Account")}
+        />
+        <Button
+          title={'Forgot password?'}
+          style={styles.input}
+          onPress = {()=> props.navigation.navigate("Forgot Password")}
         />
       </View>
     );

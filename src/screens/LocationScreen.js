@@ -27,7 +27,7 @@ const LocationScreen =  props => {
           clearButtonMode="always"
           value={query}
           onChangeText={queryText => handleSearch(queryText)}
-          placeholder="City & State or Zip"
+          placeholder="Search"
           style={{ backgroundColor: '#fff', paddingHorizontal: 20 }}
         />
       </View>
