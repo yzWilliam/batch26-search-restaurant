@@ -8,7 +8,9 @@ import MenuScreen from '../screens/MenuScreen';
 const Stack = createStackNavigator();
 
 const HomeNavigator = () => (
-    <Stack.Navigator>
+    <Stack.Navigator
+        initialRouteName="Home"
+    >
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Order Type" component={OrderTypeScreen}/>
         <Stack.Screen name="Choose Location" component={LocationScreen}/>

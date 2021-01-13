@@ -5,7 +5,7 @@ const ForgotPasswordScreen = props => {
   return <SafeAreaView style={styles.container}>
     <TextInput
         style={styles.input}
-        placeholder="example@email.com"
+        placeholder="Email"
     />
     <Button
       style={styles.input}

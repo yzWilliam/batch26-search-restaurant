@@ -38,7 +38,7 @@ const OrderTypeScreen = props => {
 
   return (<SafeAreaView style={styles.safeAreaContainer}>
     <View style={styles.container}>
-      <Text>How Do you want your order?</Text>
+      <Text>How do you want your order?</Text>
       <Picker variable={orderType} setVariable={setOrderType}
         items={orderTypeItems} str='Order Type' />
       <Picker variable={when} setVariable={setWhen}
