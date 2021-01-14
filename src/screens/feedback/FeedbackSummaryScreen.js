@@ -2,11 +2,13 @@ import React from "react";
 import { SafeAreaView, Text, StyleSheet, Button, TextInput, View } from "react-native";
 
 const GeneralFeedbackScreen = props => {
+  let {feedback1, feedback2, entry} = props.route.params;
   return <SafeAreaView style={styles.SafeAreaContainer}>
     <View style={styles.container}>
         <Text style={styles.title}>Feedback Summary</Text>
-        <Text>What: {props.route.params.feedback1}</Text>
-        <Text>Why: {props.route.params.feedback2}</Text>
+        <Text>What: {feedback1}</Text>
+        <Text>Why: {feedback2}</Text>
+        {entry? <Text>Location: {entry.location.city}</Text> : null}
         <Text style={styles.title}>Contact Info</Text>
         <TextInput
           placeholder={'Full Name'}

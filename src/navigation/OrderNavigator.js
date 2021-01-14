@@ -1,14 +1,16 @@
 import React from "react";
 import { createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from "../screens/HomeScreen";
-import OrderTypeScreen from '../screens/OrderTypeScreen';
-import LocationScreen from '../screens/LocationScreen';
-import MenuScreen from '../screens/MenuScreen';
-import CategoryScreen from '../screens/CategoryScreen';
+import OrderTypeScreen from '../screens/order/OrderTypeScreen';
+import LocationScreen from '../screens/order/LocationScreen';
+import MenuScreen from '../screens/order/MenuScreen';
+import CategoryScreen from '../screens/order/CategoryScreen';
+import BasketScreen from '../screens/order/BasketScreen';
+import ItemScreen from '../screens/order/ItemScreen';
 
 const Stack = createStackNavigator();
 
-const HomeNavigator = () => (
+const OrderNavigator = () => (
     <Stack.Navigator
         initialRouteName="Home"
     >
@@ -19,9 +21,13 @@ const HomeNavigator = () => (
         <Stack.Screen name="Category" component={CategoryScreen} options={
             ({navigation, route}) => ({
                 title: route.params.category
-            }
-            )}/>
+            })}/>
+        <Stack.Screen name="Basket" component={BasketScreen}/>
+        <Stack.Screen name="Item" component={ItemScreen} options={
+            ({navigation, route}) => ({
+                title: route.params.name
+            })}/>
     </Stack.Navigator>
 );
 
-export default HomeNavigator;
+export default OrderNavigator;

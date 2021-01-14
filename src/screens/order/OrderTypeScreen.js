@@ -40,6 +40,15 @@ const whenItems = [
   {label: 'Later', value: 'later'},
 ];
 
+const valueToLabel = {
+  'pickup': 'In-Store Pickup',
+  'driveup': 'Mobile Drive-Up Window',
+  'curbside': 'Curbside',
+  'delivery': 'Delivery',
+  'asap': 'ASAP',
+  'later': 'Later',
+}
+
 const OrderTypeScreen = props => {
   const [orderType, setOrderType] = useState('pickup');
   const [when, setWhen] = useState('asap');
@@ -122,8 +131,8 @@ const OrderTypeScreen = props => {
     <Button
       title="Search for Locations"
       onPress = {() => props.navigation.navigate("Choose Location", {
-        orderType: orderType,
-        when: (when === 'later')? deliveryTime : when,
+        orderType: valueToLabel[orderType],
+        when: (when === 'later')? deliveryTime : valueToLabel[when],
       })}
     />
     </SafeAreaView>

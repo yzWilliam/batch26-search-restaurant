@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { View , Text, StyleSheet, SafeAreaView, 
+import { View , Text, StyleSheet, SafeAreaView, TouchableOpacity, Image,
   FlatList, TextInput, ActivityIndicator, Dimensions } from "react-native";
-import ListItem from './ListItem'
 import filter from 'lodash.filter';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import MapView from 'react-native-maps';
 
-const LocationTabView =  props => {
+const LocationScreen =  props => {
   
   const API_ENDPOINT = "https://randomuser.me/api/?seed=1&page=1&results=20";
   const [isLoading, setIsLoading] = useState(false);
@@ -77,12 +76,27 @@ const LocationTabView =  props => {
       <View style={styles.container}>
           <FlatList
             data={data}
-            renderItem={({ item }) => <ListItem
-            entry={item}
-            navigation={props.navigation} />}
-            keyExtractor={item => item.first}
+            keyExtractor={item => item.email}
             ListHeaderComponent={renderHeader}
-          />
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => props.navigation.navigate("Menu", {
+                entry: item,
+                orderType: props.route.params.orderType,
+                when: props.route.params.when,
+              })} activeOpacity={0.7} style={styles.container}>
+              <View style={styles.listItem}>
+                <Image
+                  source={{ uri: item.picture.thumbnail }}
+                  style={styles.coverImage}
+                />
+                <View style={styles.metaInfo}>
+                  <Text style={styles.title}>{`${item.name.first} ${
+                  item.name.last
+                  }`}</Text>
+                </View>
+              </View>
+              </TouchableOpacity>)}
+            />
       </View>
     </SafeAreaView>
   );
@@ -150,6 +164,26 @@ const styles = StyleSheet.create({
   scene: {
     flex: 1,
   },
+  listItem: {
+    marginTop: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    backgroundColor: '#fff',
+    flexDirection: 'row'
+  },
+  coverImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 8
+  },
+  metaInfo: {
+    marginLeft: 10
+  },
+  title: {
+    fontSize: 18,
+    width: 200,
+    padding: 10
+  },
 });
 
-export default LocationTabView;
+export default LocationScreen;

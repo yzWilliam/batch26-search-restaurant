@@ -1,5 +1,4 @@
-import { useLinkProps } from "@react-navigation/native";
-import React from "react";
+import React, {useState} from "react";
 import { View , Text, StyleSheet, Image, TouchableOpacity, 
   SafeAreaView, FlatList, Button } from "react-native";
 
@@ -15,6 +14,16 @@ const categories = [
 const MenuScreen =  props => {
 
   const {name, location, email, cell, picture} = props.route.params.entry;
+
+  const [basket, setBasket] = useState([]);
+
+  if (props.route.params.toBeAdded) {
+    const {name, price, calories, quantity} = props.route.params;
+    setBasket(basket.concat({name, price, calories, quantity}));
+    props.route.params.toBeAdded = false;
+  }
+
+  // console.log(basket);
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
@@ -35,7 +44,9 @@ const MenuScreen =  props => {
           renderItem={({ item }) => (
             <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => props.navigation.navigate('Category', {category: item.name})}
+            onPress={() => props.navigation.navigate('Category', {
+              category: item.name,
+            })}
             >
             <View style={styles.listItem}>
               <Image
@@ -50,6 +61,12 @@ const MenuScreen =  props => {
       </View>
       <Button
         title="Review Basket"
+        onPress = {()=> props.navigation.navigate("Basket", {
+          entry: props.route.params.entry,
+          orderType: props.route.params.orderType,
+          when: props.route.params.when,
+          basket: JSON.stringify(basket),
+        })}
       />
     </SafeAreaView>
   )

@@ -35,13 +35,19 @@ const items = {
     ],
 };
 
-const Menu = ({category}) => {
-    return (
+const CategoryScreen = (props) => {
+    const {category} = props.route.params;
+    return <View style={styles.container}>
         <FlatList
             data={items[category]}
             renderItem={({ item }) => (
                 <TouchableOpacity
                     activeOpacity={0.7}
+                    onPress={() => props.navigation.navigate('Item', {
+                        name: item.name, 
+                        price: item.price,
+                        calories: item.calories,
+                    })}
                 >
                 <View style={styles.item}>
                     <Text style={styles.text}>{item.name}</Text>
@@ -50,12 +56,6 @@ const Menu = ({category}) => {
                 </TouchableOpacity>)}
             keyExtractor={item => item.name}
         />
-      )
-}
-
-const CategoryScreen = (props) => {
-    return <View style={styles.container}>
-        <Menu category={props.route.params.category}/>
     </View>
 }
 

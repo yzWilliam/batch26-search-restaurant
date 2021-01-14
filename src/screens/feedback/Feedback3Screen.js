@@ -6,7 +6,7 @@ const Feedback3Screen = props => {
     <Text>Is this about a sepecific location?</Text>
     <Button
       title="General Feedback"
-      onPress = {()=> props.navigation.navigate("General Feedback", {
+      onPress = {()=> props.navigation.navigate("Feedback Summary", {
           feedback1: props.route.params.feedback1,
           feedback2: props.route.params.feedback2,
         })}
