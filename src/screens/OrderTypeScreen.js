@@ -86,7 +86,9 @@ const OrderTypeScreen = props => {
         itemStyle={{justifyContent: 'center'}}
         dropDownStyle={{backgroundColor: '#fafafa'}}
       />
-      <Text> {deliveryTime} </Text>
+      <View style={{alignSelf: 'center'}}>
+        <Text> {deliveryTime} </Text>
+      </View>
       <View style={styles.deliveryContainer}>
         { showDelivery? (<Text>Provide a delivery address</Text>) : null}
         { showDelivery? ( <TextInput
