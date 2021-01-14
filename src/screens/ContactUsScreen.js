@@ -3,7 +3,6 @@ import { View , Text, StyleSheet, Button, SafeAreaView } from "react-native";
 import ContactUsRow from '../components/ContactUsRow';
 
 const ContactUsScreen =  props => {
-  console.log(props);
   
   return  <SafeAreaView style={styles.container}>
     <ContactUsRow title={'Email'}

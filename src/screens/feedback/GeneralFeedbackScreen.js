@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, Text, StyleSheet, Button, TextInput, View } from "react-native";
 
-const HomeScreen = props => {
+const GeneralFeedbackScreen = props => {
   return <SafeAreaView style={styles.SafeAreaContainer}>
     <View style={styles.container}>
         <Text style={styles.title}>Feedback Summary</Text>
@@ -35,7 +35,7 @@ const HomeScreen = props => {
   </SafeAreaView>
 }
 
-export default HomeScreen;
+export default GeneralFeedbackScreen;
 
 const styles = StyleSheet.create({
   SafeAreaView: {

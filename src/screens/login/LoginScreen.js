@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, TextInput, View, StyleSheet } from 'react-native';
 
 const LoginScreen = props => {
-    console.log(props);
 
     return (
         <View style={styles.container}>

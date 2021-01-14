@@ -7,7 +7,6 @@ const LoadingIndicatorView = () => (
 );
 
 const UserAgreementScreen =  props => {
-  console.log(props);  
 
   return <SafeAreaView style={styles.container}>
       <WebView

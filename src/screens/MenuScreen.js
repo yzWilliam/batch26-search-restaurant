@@ -2,8 +2,6 @@ import React from "react";
 import { View , Text, StyleSheet, Image } from "react-native";
 
 const MenuScreen =  props => {
-  console.log(props);
-  console.log(props.route.params.entry);
 
   const {name, location, email, cell, picture} = props.route.params.entry;
 
