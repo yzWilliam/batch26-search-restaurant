@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Button, Text,
   View, TextInput, Modal, TouchableHighlight } from "react-native";
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import CheckboxFormX from 'react-native-checkbox-form';
 
 const monthNames = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -98,29 +99,43 @@ const OrderTypeScreen = props => {
       <View style={{alignSelf: 'center'}}>
         <Text> {deliveryTime} </Text>
       </View>
-      <View style={styles.deliveryContainer}>
-        { showDelivery? (<Text>Provide a delivery address</Text>) : null}
-        { showDelivery? ( <TextInput
+      { showDelivery? ( <View style={styles.deliveryContainer}>
+        <Text>Provide a delivery address</Text>
+        <View style={styles.contactless}>
+          <Text style={styles.contactlessTitle}>We Now Offer Contactless Deliveries</Text>
+          <Text>Minimize contact with your delivery person by</Text>
+          <Text>selecting "I want contactless delivery" when</Text>
+          <Text>adding a new address.</Text>
+        </View>
+        <TextInput
         style={styles.input}
         placeholder="Street Address"
-        /> ) : null}
-        { showDelivery? ( <TextInput
+        />
+         <TextInput
         style={styles.input}
         placeholder="Building Name/Suite/Apt"
-        /> ) : null}
-        { showDelivery? ( <TextInput
+        /> 
+         <TextInput
         style={styles.input}
         placeholder="City"
-        /> ) : null}
-        { showDelivery? ( <TextInput
+        /> 
+         <TextInput
         style={styles.input}
         placeholder="Zip Code"
-        /> ) : null}
-        { showDelivery? ( <TextInput
+        /> 
+         <TextInput
         style={styles.input}
-        placeholder="Delivery Instructions"
-        /> ) : null}
-      </View>
+        placeholder="Delivery Instructions (22 Character Limit)"
+        /> 
+        <CheckboxFormX 
+          dataSource={[{label: 'I want contactless delivery', value: false}]}
+          itemShowKey='label'
+          itemCheckedKey='checked'
+          iconSize={16}
+          formHorizontal={false}
+          labelHorizontal={true}
+        />
+      </View> ) : null}
     </View>
     <DateTimePickerModal
       isVisible={isDatePickerVisible}
@@ -158,8 +173,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
+  contactless: {
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  contactlessTitle: {
+    color: 'red',
+    fontSize: 20,
+  },
   input: {
-    width: 250,
+    width: 300,
     height: 40,
     padding: 10,
     borderWidth: 1,

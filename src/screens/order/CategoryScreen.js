@@ -25,13 +25,25 @@ const items = {
         {name: 'Veggie Sandwich with Cheese', price: 5.19, calories: 420},
     ],
     "Fries": [
-
+        {name: 'Little Fries', price: 3.69, calories: 530}, 
+        {name: 'Little Cajun Fries', price: 3.69, calories: 530}, 
+        {name: 'Regular Fries', price: 4.79, calories: 950}, 
+        {name: 'Cajun Fries', price: 4.79, calories: 950}, 
+        {name: 'Large Fries', price: 6.19, calories: 1310}, 
+        {name: 'Large Cajun Fries', price: 6.19, calories: 1310}, 
     ],
     "Drinks": [
-
+        {name: 'Regular Drink', price: 2.89, calories: 360}, 
+        {name: 'Large Drink', price: 2.99, calories: 520}, 
+        {name: 'Bottled Wate', price: 1.99, calories: 0}, 
+        {name: 'Honest Tea Bottle', price: 2.79, calories: 70}, 
+        {name: 'Simply Lemonade Bottle', price: 2.79, calories: 160}, 
+        {name: 'Coke Bottle', price: 2.59, calories: 240}, 
+        {name: 'Diet Coke Bottle', price: 2.59, calories: 0}, 
+        {name: 'Sprite Bottle', price: 2.59, calories: 240}, 
     ],
     "Shakes": [
-
+        {name: 'Milkshake', price: 5.05, calories: 670}, 
     ],
 };
 

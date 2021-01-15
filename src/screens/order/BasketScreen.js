@@ -47,6 +47,7 @@ const BasketScreen = (props) => {
             <Text style={styles.title}>Items</Text>
             <FlatList
               data={data}
+              keyExtractor={(item, index) => 'key'+index}
               renderItem={({ item }) => (
                 <TouchableOpacity
                   activeOpacity={0.7}
@@ -56,7 +57,6 @@ const BasketScreen = (props) => {
                     <Text style={styles.text}>${(item.quantity*item.price).toFixed(2)}</Text>
                   </View>
                 </TouchableOpacity>)}
-              keyExtractor={item => item.name}
             />
             <View style={styles.row}>
               <Text style={styles.text}>Subtotal:</Text>

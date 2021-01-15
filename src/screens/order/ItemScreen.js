@@ -4,7 +4,7 @@ import { View , Text, StyleSheet, FlatList, TouchableOpacity,
 
 const ItemScreen = (props) => {
   const {name, price, calories} = props.route.params;
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
@@ -12,7 +12,7 @@ const ItemScreen = (props) => {
         <Text style={styles.text}>${price}  {calories} Calories</Text>
         <Text style={styles.title}>Quantity</Text>
         <View style={styles.row}>
-          <TouchableOpacity onPress={() => setQuantity(quantity-1)}>
+          <TouchableOpacity onPress={() => (quantity>1)? setQuantity(quantity-1): null}>
             <Text style={styles.button}>
               -
             </Text>
@@ -34,7 +34,7 @@ const ItemScreen = (props) => {
           price: price,
           calories: calories,
           quantity: quantity,
-          toBeAdded: true,
+          newItem: true,
         })}
       />
     </SafeAreaView>

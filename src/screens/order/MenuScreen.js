@@ -17,13 +17,11 @@ const MenuScreen =  props => {
 
   const [basket, setBasket] = useState([]);
 
-  if (props.route.params.toBeAdded) {
+  if (props.route.params.newItem) {
     const {name, price, calories, quantity} = props.route.params;
     setBasket(basket.concat({name, price, calories, quantity}));
-    props.route.params.toBeAdded = false;
+    props.route.params.newItem = false;
   }
-
-  // console.log(basket);
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
