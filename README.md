@@ -24,7 +24,7 @@
       <a href="#installation">Installation</a>
     </li>
     <li>
-      <a href="#usage">Usage</a>
+      <a href="#screenshots">Screenshots</a>
       <ul>
         <li>
           <a href="#basic-functions">Basic Functions</a>
@@ -40,17 +40,12 @@
           <a href="#placing-an-order">Placing an Order</a>
           <ul><li><a href="#choosing-order-type">Choosing Order Type</a></li></ul>
           <ul><li><a href="#choosing-location">Choosing Location</a></li></ul>
-          <ul><li><a href="#choosing-items">Choosing Items</a></li></ul>
+          <ul><li><a href="#adding-items-to-the-basket">Adding Items to the Basket</a></li></ul>
           <ul><li><a href="#updating-items-in-the-basket">Updating Items in the Basket</a></li></ul>
           <ul><li><a href="#checking-out">Checking Out</a></li></ul>
         </li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -87,7 +82,7 @@ This mobile app supports both the iOS and Android platforms.
 
 
 
-## Usage
+## Screenshots
 
 ### Basic Functions
 
@@ -132,7 +127,7 @@ This mobile app supports both the iOS and Android platforms.
 [![location-list.png](https://i.postimg.cc/rsf4Nf80/location-list.png)](https://postimg.cc/p5ny2Y5R)
 [![location-map.png](https://i.postimg.cc/9Fzwjtmb/location-map.png)](https://postimg.cc/F75HySJk)
 
-#### Choosing Items
+#### Adding Items to the Basket
 
 [![menu-screen.png](https://i.postimg.cc/nc5jVjMJ/menu-screen.png)](https://postimg.cc/xcvTtdKx)
 [![category-screen.png](https://i.postimg.cc/ZYwvgDS0/category-screen.png)](https://postimg.cc/nMQL92Mt)
@@ -152,13 +147,3 @@ This mobile app supports both the iOS and Android platforms.
 
 [![checkout.png](https://i.postimg.cc/RVbf3ps2/checkout.png)](https://postimg.cc/hfTh6sq0)
 [![payment.png](https://i.postimg.cc/DyzLw3gq/payment.png)](https://postimg.cc/mh0tmqKD)
-
-## Roadmap
-
-## Contributing
-
-## License
-
-## Contact
-
-## Acknowledgements
