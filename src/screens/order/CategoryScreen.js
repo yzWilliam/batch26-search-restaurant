@@ -48,6 +48,7 @@ const items = {
 };
 
 const CategoryScreen = (props) => {
+
     const {category} = props.route.params;
     return <View style={styles.container}>
         <FlatList
@@ -59,6 +60,10 @@ const CategoryScreen = (props) => {
                         name: item.name, 
                         price: item.price,
                         calories: item.calories,
+                        location: props.route.params.location,
+                        orderType: props.route.params.orderType,
+                        when: props.route.params.when,
+                        basket: props.route.params.basket,
                     })}
                 >
                 <View style={styles.item}>

@@ -13,15 +13,8 @@ const categories = [
 
 const MenuScreen =  props => {
 
-  const {name, location, email, cell, picture} = props.route.params.entry;
-
-  const [basket, setBasket] = useState([]);
-
-  if (props.route.params.newItem) {
-    const {name, price, calories, quantity} = props.route.params;
-    setBasket(basket.concat({name, price, calories, quantity}));
-    props.route.params.newItem = false;
-  }
+  const {name, location, email, cell, picture} = props.route.params.location;
+  const {basket=JSON.stringify([])} = props.route.params;
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
@@ -44,6 +37,10 @@ const MenuScreen =  props => {
             activeOpacity={0.7}
             onPress={() => props.navigation.navigate('Category', {
               category: item.name,
+              location: props.route.params.location,
+              orderType: props.route.params.orderType,
+              when: props.route.params.when,
+              basket: basket,
             })}
             >
             <View style={styles.listItem}>
@@ -60,10 +57,10 @@ const MenuScreen =  props => {
       <Button
         title="Review Basket"
         onPress = {()=> props.navigation.navigate("Basket", {
-          entry: props.route.params.entry,
+          location: props.route.params.location,
           orderType: props.route.params.orderType,
           when: props.route.params.when,
-          basket: JSON.stringify(basket),
+          basket: basket,
         })}
       />
     </SafeAreaView>

@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { View , Text, StyleSheet, SafeAreaView, Button, 
   Image, FlatList, TouchableOpacity } from "react-native";
 
 const BasketScreen = (props) => {
-    const {name, location, picture} = props.route.params.entry;
-    const {orderType, when, basket} = props.route.params;
 
-    console.log(JSON.parse(basket));
-    const data = JSON.parse(basket);
+    const {name, location, picture} = props.route.params.location;
+    const {orderType, when, basket, update=false} = props.route.params;
+
+    const [data, setData] = useState(JSON.parse(basket));
+    if (update) {
+      setData(JSON.parse(basket));
+      props.route.params.update = false;
+    }
 
     var subtotal = 0;
     for (let i = 0; i < data.length; i++) {
@@ -16,6 +20,8 @@ const BasketScreen = (props) => {
     const taxRate = 0.08875;
     const estimatedTax = taxRate*subtotal;
     const estimatedTotal = (1+taxRate)*subtotal;
+
+    const [editItems, setEditItems] = useState(false);
 
     return (<SafeAreaView style={styles.safeAreaContainer}>
         <View style={styles.container}>
@@ -30,7 +36,12 @@ const BasketScreen = (props) => {
             </View>
             <Button
                 title="Add More Items"
-                onPress={() => props.navigation.navigate("Menu")}
+                onPress={() => props.navigation.navigate("Menu", {
+                  basket: JSON.stringify(data),
+                  location: props.route.params.location,
+                  orderType: orderType,
+                  when: when,
+                })}
             />
             <View style={styles.row}>
               <Text style={styles.text}>Order Type:</Text>
@@ -44,31 +55,62 @@ const BasketScreen = (props) => {
             <Button
                 title="Redeem"
             />
-            <Text style={styles.title}>Items</Text>
+            <View style={styles.row}>
+              <Text style={styles.title}>Items</Text>
+              {(editItems)? <Button
+                title='Done'
+                onPress={() => setEditItems(false)}
+              /> : <Button 
+                title='Edit'
+                onPress={() => setEditItems(true)}
+              />}
+            </View>
             <FlatList
+              style={styles.list}
               data={data}
-              keyExtractor={(item, index) => 'key'+index}
-              renderItem={({ item }) => (
+              keyExtractor={( item, index ) => 'key'+index}
+              renderItem={({ item, index }) => (
                 <TouchableOpacity
                   activeOpacity={0.7}
+                  onPress={() => props.navigation.navigate("Item", {
+                    name: item.name,
+                    price: item.price, 
+                    calories: item.calories,
+                    initialQuantity: item.quantity,
+                    index: index,
+                    location: props.route.params.location,
+                    orderType: orderType, 
+                    when: when,
+                    basket: JSON.stringify(data),
+                  })}
                 >
                   <View style={styles.row}>
-                    <Text style={styles.text}>{item.quantity}*{item.name}</Text>
-                    <Text style={styles.text}>${(item.quantity*item.price).toFixed(2)}</Text>
+                    <Text style={styles.text}>{item.quantity}x {item.name}</Text>
+                    <View style={styles.row}>
+                      <Text style={styles.text}>${(item.quantity*item.price).toFixed(2)}  </Text>
+                      {(editItems)? <TouchableOpacity
+                        onPress={() => setData(data.filter((v, i) => i != index))}
+                      >
+                        <Text style={{color: '#1384FF'}}>delete</Text>
+                      </TouchableOpacity> : <Text style={{color: '#1384FF'}}>{'>'}</Text>}
+                    </View>
                   </View>
-                </TouchableOpacity>)}
+                </TouchableOpacity>
+                )}
             />
-            <View style={styles.row}>
-              <Text style={styles.text}>Subtotal:</Text>
-              <Text style={styles.text}>${subtotal.toFixed(2)}</Text>
-            </View>
-            <View style={styles.row}>
-              <Text style={styles.text}>Estimated Tax:</Text>
-              <Text style={styles.text}>${estimatedTax.toFixed(2)}</Text>
-            </View>
-            <View style={styles.row}>
-              <Text style={styles.textBold}>Estimated Total:</Text>
-              <Text style={styles.textBold}>${estimatedTotal.toFixed(2)}</Text>
+            <View style={styles.total}>
+              <View style={styles.row}>
+                <Text style={styles.text}>Subtotal:</Text>
+                <Text style={styles.text}>${subtotal.toFixed(2)}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.text}>Estimated Tax:</Text>
+                <Text style={styles.text}>${estimatedTax.toFixed(2)}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.textBold}>Estimated Total:</Text>
+                <Text style={styles.textBold}>${estimatedTotal.toFixed(2)}</Text>
+              </View>
             </View>
         </View>
         <Button
@@ -107,6 +149,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   title: {
@@ -120,5 +163,12 @@ const styles = StyleSheet.create({
   textBold: {
     fontSize: 20,
     fontWeight: 'bold',
-  }
+  },
+  list: {
+    height: '40%',
+  },
+  total: {
+    marginHorizontal: 20,
+    marginVertical: 20,
+  },
 });

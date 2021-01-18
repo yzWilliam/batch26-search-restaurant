@@ -3,8 +3,10 @@ import { View , Text, StyleSheet, FlatList, TouchableOpacity,
   SafeAreaView, Button } from "react-native";
 
 const ItemScreen = (props) => {
-  const {name, price, calories} = props.route.params;
-  const [quantity, setQuantity] = useState(1);
+
+  const {name, price, calories, initialQuantity=1, index=-1} = props.route.params;
+  const [quantity, setQuantity] = useState(initialQuantity);
+  const basket = JSON.parse(props.route.params.basket);
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
@@ -27,16 +29,30 @@ const ItemScreen = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <Button
+      {(index > -1)? <Button
+        title="Update Item"
+        onPress = {() => {
+          basket[index].quantity = quantity;
+          props.navigation.navigate('Basket', {
+            location: props.route.params.location,
+            orderType: props.route.params.orderType,
+            when: props.route.params.when,
+            basket: JSON.stringify(basket),
+            update: true,
+          });
+        }}
+      />: <Button
         title="Add to Basket"
-        onPress = {() => props.navigation.navigate('Menu', {
-          name: name,
-          price: price,
-          calories: calories,
-          quantity: quantity,
-          newItem: true,
-        })}
-      />
+        onPress = {() => {
+          basket.push({name, price, calories, quantity});
+          props.navigation.navigate('Menu', {
+            location: props.route.params.location,
+            orderType: props.route.params.orderType,
+            when: props.route.params.when,
+            basket: JSON.stringify(basket),
+          });
+        }}
+      />}
     </SafeAreaView>
   )
 };

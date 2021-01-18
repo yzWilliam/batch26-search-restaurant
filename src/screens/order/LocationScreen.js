@@ -80,7 +80,7 @@ const LocationScreen =  props => {
             ListHeaderComponent={renderHeader}
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => props.navigation.navigate("Menu", {
-                entry: item,
+                location: item,
                 orderType: props.route.params.orderType,
                 when: props.route.params.when,
               })} activeOpacity={0.7} style={styles.container}>
