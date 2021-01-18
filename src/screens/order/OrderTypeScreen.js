@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { SafeAreaView, StyleSheet, Button, Text,
-  View, TextInput, TouchableOpacity } from "react-native";
+  View, TextInput, TouchableOpacity, Platform } from "react-native";
 // import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import CheckboxFormX from 'react-native-checkbox-form';
@@ -63,14 +63,14 @@ const OrderTypeScreen = props => {
           activeOpacity={0.7}
           onPress={() => ActionSheet.showActionSheetWithOptions(
             {
-              options: ["Cancel"].concat(orderTypeItems),
+              options: (Platform.OS == 'ios')? orderTypeItems.concat(["Cancel"]) : orderTypeItems,
               // destructiveButtonIndex: 0,
-              cancelButtonIndex: 0,
+              cancelButtonIndex: 4,
               title: "How would you like to get your order?",
             },
             buttonIndex => {
               if (buttonIndex > 0) {
-                setOrderType(orderTypeItems[buttonIndex - 1]);
+                setOrderType(orderTypeItems[buttonIndex]);
               }
             }
           )}
@@ -84,15 +84,15 @@ const OrderTypeScreen = props => {
           activeOpacity={0.7}
           onPress={() => ActionSheet.showActionSheetWithOptions(
             {
-              options: ["Cancel"].concat(whenItems),
-              cancelButtonIndex: 0,
+              options: (Platform.OS == 'ios')? whenItems.concat(["Cancel"]) : whenItems,
+              cancelButtonIndex: 2,
               title: "When would you like your order?",
             },
             buttonIndex => {
-              if (buttonIndex === 1) {
+              if (buttonIndex === 0) {
                 setWhen(whenItems[0]);
               }
-              if (buttonIndex === 2) {
+              if (buttonIndex === 1) {
                 setDatePickerVisibility(true);
               }
             }

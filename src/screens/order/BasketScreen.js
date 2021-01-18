@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   list: {
-    height: '40%',
+    // height: '40%',
   },
   total: {
     marginHorizontal: 20,
