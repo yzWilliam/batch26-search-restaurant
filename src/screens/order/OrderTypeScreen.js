@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { SafeAreaView, StyleSheet, Button, Text,
-  View, TextInput, TouchableOpacity, Platform } from "react-native";
+  View, TextInput, TouchableOpacity, } from "react-native";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import CheckboxFormX from 'react-native-checkbox-form';
 import ActionSheet from 'react-native-actionsheet';
