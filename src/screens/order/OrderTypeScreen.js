@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import { SafeAreaView, StyleSheet, Button, Text,
   View, TextInput, TouchableOpacity, Platform } from "react-native";
-// import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import CheckboxFormX from 'react-native-checkbox-form';
-import ActionSheet from 'react-native-action-sheet';
+import ActionSheet from 'react-native-actionsheet';
 
 const monthNames = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -54,53 +53,66 @@ const OrderTypeScreen = props => {
     setDatePickerVisibility(false);
   };
 
+  class OrderTypeActionSheet extends React.Component {
+    showActionSheet = () => {
+      this.ActionSheet.show()
+    }
+    render() {
+      return (
+        <View style={styles.row}>
+          <Text style={styles.text}>Order Type:</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={this.showActionSheet}
+          >
+            <Text style={styles.text}>{orderType} {'>'}</Text>
+          </TouchableOpacity>
+          <ActionSheet
+            ref={o => this.ActionSheet = o}
+            title={"How would you like to get your order?"}
+            options={["Cancel"].concat(orderTypeItems)}
+            cancelButtonIndex={0}
+            onPress={(index) => {if (index > 0) {setOrderType(orderTypeItems[index - 1])}}}
+          />
+        </View>
+      )
+    }
+  }
+
+  class WhenActionSheet extends React.Component {
+    showActionSheet = () => {
+      this.ActionSheet.show()
+    }
+    render() {
+      return (
+        <View style={styles.row}>
+          <Text style={styles.text}>When:</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={this.showActionSheet}
+          >
+            <Text style={styles.text}>{when} {'>'}</Text>
+          </TouchableOpacity>
+          <ActionSheet
+            ref={o => this.ActionSheet = o}
+            title={"When would you like your order?"}
+            options={["Cancel"].concat(whenItems)}
+            cancelButtonIndex={0}
+            onPress={(index) => {
+              if (index === 1) {setWhen(whenItems[0])}
+              if (index === 2) {setDatePickerVisibility(true)}
+            }}
+          />
+        </View>
+      )
+    }
+  }
+
   return (<SafeAreaView style={styles.safeAreaContainer}>
     <View style={styles.container}>
       <Text style={styles.text}>How do you want your order?</Text>
-      <View style={styles.row}>
-        <Text style={styles.text}>Order Type:</Text>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => ActionSheet.showActionSheetWithOptions(
-            {
-              options: (Platform.OS == 'ios')? orderTypeItems.concat(["Cancel"]) : orderTypeItems,
-              // destructiveButtonIndex: 0,
-              cancelButtonIndex: 4,
-              title: "How would you like to get your order?",
-            },
-            buttonIndex => {
-              if (buttonIndex > 0) {
-                setOrderType(orderTypeItems[buttonIndex]);
-              }
-            }
-          )}
-        >
-          <Text style={styles.text}>{orderType} {'>'}</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.text}>When:</Text>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => ActionSheet.showActionSheetWithOptions(
-            {
-              options: (Platform.OS == 'ios')? whenItems.concat(["Cancel"]) : whenItems,
-              cancelButtonIndex: 2,
-              title: "When would you like your order?",
-            },
-            buttonIndex => {
-              if (buttonIndex === 0) {
-                setWhen(whenItems[0]);
-              }
-              if (buttonIndex === 1) {
-                setDatePickerVisibility(true);
-              }
-            }
-          )}
-        >
-          <Text style={styles.text}>{when} {'>'}</Text>
-        </TouchableOpacity>
-      </View>
+      <OrderTypeActionSheet/>
+      <WhenActionSheet/>
 
       { showDelivery? ( <View style={styles.deliveryContainer}>
         <Text style={styles.text}>Provide a delivery address</Text>

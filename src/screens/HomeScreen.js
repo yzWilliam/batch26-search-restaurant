@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, Button } from "react-native";
+import { SafeAreaView, Text, StyleSheet, Button, View } from "react-native";
 
 const HomeScreen = props => {
 
