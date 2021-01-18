@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import { SafeAreaView, StyleSheet, Button, Text,
-  View, TextInput, Modal, TouchableHighlight } from "react-native";
-import DropDownPicker from 'react-native-dropdown-picker';
+  View, TextInput, TouchableOpacity } from "react-native";
+// import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import CheckboxFormX from 'react-native-checkbox-form';
+import ActionSheet from 'react-native-action-sheet';
 
 const monthNames = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -30,77 +31,79 @@ const formatDate = (rawDate) => {
 }
 
 const orderTypeItems = [
-  {label: 'In-Store Pickup', value: 'pickup'},
-  {label: 'Mobile Drive-Up Window', value: 'driveup'},
-  {label: 'Curbside', value: 'curbside'},
-  {label: 'Delivery', value: 'delivery'},
+  'In-Store Pickup',
+  'Mobile Drive-Up Window',
+  'Curbside',
+  'Delivery',
 ];
 
 const whenItems = [
-  {label: 'ASAP', value: 'asap'},
-  {label: 'Later', value: 'later'},
+  'ASAP',
+  'Later',
 ];
 
-const valueToLabel = {
-  'pickup': 'In-Store Pickup',
-  'driveup': 'Mobile Drive-Up Window',
-  'curbside': 'Curbside',
-  'delivery': 'Delivery',
-  'asap': 'ASAP',
-  'later': 'Later',
-}
-
 const OrderTypeScreen = props => {
-  const [orderType, setOrderType] = useState('pickup');
-  const [when, setWhen] = useState('asap');
+  const [orderType, setOrderType] = useState('In-Store Pickup');
+  const [when, setWhen] = useState('ASAP');
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [deliveryTime, setDeliveryTime] = useState('');
-  const showDelivery = (orderType === 'delivery')? true: false;
+  const showDelivery = (orderType === 'Delivery')? true: false;
 
   const handleConfirm = (rawDate) => {
     let [day, month, date, hours, minutes, suffix] = formatDate(rawDate);
-    setDeliveryTime(day+' '+month+' '+date+' @ '+hours+':'+minutes+' '+suffix);
+    setWhen(day+' '+month+' '+date+' @ '+hours+':'+minutes+' '+suffix);
     setDatePickerVisibility(false);
   };
 
   return (<SafeAreaView style={styles.safeAreaContainer}>
     <View style={styles.container}>
-      <Text>How do you want your order?</Text>
-      <Text>Order Type</Text>
-      <DropDownPicker
-        items={orderTypeItems} 
-        defaultValue={orderType}
-        onChangeItem={item => {
-          setOrderType(item.value);
-        }}
-        zIndex={5000}
-        containerStyle={{height: 40}}
-        style={{backgroundColor: '#fafafa'}}
-        labelStyle={{textAlign: 'center'}}
-        itemStyle={{justifyContent: 'center'}}
-        dropDownStyle={{backgroundColor: '#fafafa'}}
-      />
-      <Text>When</Text>
-      <DropDownPicker
-        items={whenItems} 
-        defaultValue={when}
-        onChangeItem={item => {
-          setWhen(item.value);
-          if (item.value === 'later') {setDatePickerVisibility(true);}
-          if (item.value === 'asap') {setDeliveryTime('');}
-        }}
-        zIndex={4000}
-        containerStyle={{height: 40}}
-        style={{backgroundColor: '#fafafa'}}
-        labelStyle={{textAlign: 'center'}}
-        itemStyle={{justifyContent: 'center'}}
-        dropDownStyle={{backgroundColor: '#fafafa'}}
-      />
-      <View style={{alignSelf: 'center'}}>
-        <Text> {deliveryTime} </Text>
+      <Text style={styles.text}>How do you want your order?</Text>
+      <View style={styles.row}>
+        <Text style={styles.text}>Order Type:</Text>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => ActionSheet.showActionSheetWithOptions(
+            {
+              options: ["Cancel"].concat(orderTypeItems),
+              // destructiveButtonIndex: 0,
+              cancelButtonIndex: 0,
+              title: "How would you like to get your order?",
+            },
+            buttonIndex => {
+              if (buttonIndex > 0) {
+                setOrderType(orderTypeItems[buttonIndex - 1]);
+              }
+            }
+          )}
+        >
+          <Text style={styles.text}>{orderType} {'>'}</Text>
+        </TouchableOpacity>
       </View>
+      <View style={styles.row}>
+        <Text style={styles.text}>When:</Text>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => ActionSheet.showActionSheetWithOptions(
+            {
+              options: ["Cancel"].concat(whenItems),
+              cancelButtonIndex: 0,
+              title: "When would you like your order?",
+            },
+            buttonIndex => {
+              if (buttonIndex === 1) {
+                setWhen(whenItems[0]);
+              }
+              if (buttonIndex === 2) {
+                setDatePickerVisibility(true);
+              }
+            }
+          )}
+        >
+          <Text style={styles.text}>{when} {'>'}</Text>
+        </TouchableOpacity>
+      </View>
+
       { showDelivery? ( <View style={styles.deliveryContainer}>
-        <Text>Provide a delivery address</Text>
+        <Text style={styles.text}>Provide a delivery address</Text>
         <View style={styles.contactless}>
           <Text style={styles.contactlessTitle}>We Now Offer Contactless Deliveries</Text>
           <Text>Minimize contact with your delivery person by</Text>
@@ -146,8 +149,8 @@ const OrderTypeScreen = props => {
     <Button
       title="Search for Locations"
       onPress = {() => props.navigation.navigate("Choose Location", {
-        orderType: valueToLabel[orderType],
-        when: (when === 'later')? deliveryTime : valueToLabel[when],
+        orderType: orderType,
+        when: when,
       })}
     />
     </SafeAreaView>
@@ -224,5 +227,18 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center"
-  }
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  text: {
+    fontSize: 20,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    marginVertical: 10,
+  },
 });

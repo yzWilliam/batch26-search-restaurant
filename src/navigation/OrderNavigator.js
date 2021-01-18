@@ -7,6 +7,7 @@ import MenuScreen from '../screens/order/MenuScreen';
 import CategoryScreen from '../screens/order/CategoryScreen';
 import BasketScreen from '../screens/order/BasketScreen';
 import ItemScreen from '../screens/order/ItemScreen';
+import CheckoutScreen from '../screens/order/CheckoutScreen';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const OrderNavigator = () => (
             ({navigation, route}) => ({
                 title: route.params.name
             })}/>
+        <Stack.Screen name="Checkout" component={CheckoutScreen}/>
     </Stack.Navigator>
 );
 

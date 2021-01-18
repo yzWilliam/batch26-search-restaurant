@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { View , Text, StyleSheet, SafeAreaView, Button, 
   Image, FlatList, TouchableOpacity } from "react-native";
+import Dialog from "react-native-dialog";
 
 const BasketScreen = (props) => {
 
@@ -22,6 +23,7 @@ const BasketScreen = (props) => {
     const estimatedTotal = (1+taxRate)*subtotal;
 
     const [editItems, setEditItems] = useState(false);
+    const [showCoupon, setShowCoupon] = useState(false);
 
     return (<SafeAreaView style={styles.safeAreaContainer}>
         <View style={styles.container}>
@@ -54,7 +56,22 @@ const BasketScreen = (props) => {
             <Text style={styles.title}>Coupon</Text>
             <Button
                 title="Redeem"
+                onPress={() => setShowCoupon(true)}
             />
+            <View>
+              <Dialog.Container visible={showCoupon}>
+                <Dialog.Title>Enter your coupon code</Dialog.Title>
+                <Dialog.Input
+                  placeholder="Coupon code"
+                />
+                <Dialog.Button label="Cancel"
+                  onPress={() => setShowCoupon(false)}
+                />
+                <Dialog.Button label="Ok"
+                  onPress={() => setShowCoupon(false)} 
+                />
+              </Dialog.Container>
+            </View>
             <View style={styles.row}>
               <Text style={styles.title}>Items</Text>
               {(editItems)? <Button
@@ -115,6 +132,7 @@ const BasketScreen = (props) => {
         </View>
         <Button
             title="Checkout"
+            onPress={() => props.navigation.navigate("Checkout")}
         />
     </SafeAreaView>
     );
