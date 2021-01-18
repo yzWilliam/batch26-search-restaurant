@@ -5,9 +5,6 @@
   </p>
 </p>
 
-
-
-
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
@@ -49,38 +46,23 @@
   </ol>
 </details>
 
-
-
-
 ## About The Project
 
 This is a cross platform mobile app that searches restaurants near you and places orders for you.
 
-
-
-
 ## Built With
 
-* [Expo](https://expo.io/) - Version 4.0.16
-* [Visual Studio Code](https://code.visualstudio.com/) - Version 1.52.1
-* [Node.js](https://nodejs.org/en/) - Version 6.14.9
-
-
-
+- [Expo](https://expo.io/) - Version 4.0.16
+- [Visual Studio Code](https://code.visualstudio.com/) - Version 1.52.1
+- [Node.js](https://nodejs.org/en/) - Version 6.14.9
 
 ## Platform Support
 
 This mobile app supports both the iOS and Android platforms.
 
-
-
-
 ## Installation
 
-
-
-
-
+- [Android APK](https://i.diawi.com/cx3Chp) - Version 1.0.0
 
 ## Screenshots
 
