@@ -106,6 +106,7 @@ const BasketScreen = (props) => {
                     <View style={styles.row}>
                       <Text style={styles.text}>${(item.quantity*item.price).toFixed(2)}  </Text>
                       {(editItems)? <TouchableOpacity
+                        activeOpacity={0.7}
                         onPress={() => setData(data.filter((v, i) => i != index))}
                       >
                         <Text style={{color: '#1384FF'}}>delete</Text>
@@ -132,7 +133,9 @@ const BasketScreen = (props) => {
         </View>
         <Button
             title="Checkout"
-            onPress={() => props.navigation.navigate("Checkout")}
+            onPress={() => props.navigation.navigate("Checkout", {
+              total: estimatedTotal, 
+            })}
         />
     </SafeAreaView>
     );
