@@ -1,5 +1,6 @@
 import React from "react";
-import {SafeAreaView, Text, StyleSheet, View, Button, TextInput} from 'react-native';
+import {SafeAreaView, Text, StyleSheet, View, Button, 
+    TextInput, TouchableOpacity, } from 'react-native';
 
 const CheckoutScreen = (props) => {
     return (<SafeAreaView style={styles.safeAreaContainer}>
@@ -22,12 +23,16 @@ const CheckoutScreen = (props) => {
                 placeholder="Email Address"
             />
         </View>
-        <Button
-            title="Continue"
+        <View style={styles.bottomButton}>
+          <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => props.navigation.navigate("Payment", {
                 total: props.route.params.total,
             })}
-        />
+          >
+            <Text style={styles.buttomButtonText}>Continue</Text>
+          </TouchableOpacity>
+        </View>
     </SafeAreaView>);
 };
 
@@ -51,11 +56,23 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     input: {
-        // width: 300,
-        // height: 40,
+        fontSize: 20,
         padding: 10,
         borderWidth: 1,
         borderColor: 'black',
+        marginVertical: 10,
+    },
+    buttomButtonText:{
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: 'white',
+    },
+    bottomButton: {
+        alignSelf: 'center',
         marginBottom: 10,
+        backgroundColor: 'red',
+        alignItems: 'center',
+        width: '80%',
+        paddingVertical: '3%',
     },
 });

@@ -15,8 +15,17 @@ const Stack = createStackNavigator();
 const OrderNavigator = () => (
     <Stack.Navigator
         initialRouteName="Home"
+        screenOptions={{
+            headerStyle: {
+                backgroundColor: 'red',
+            },
+            headerTitleStyle: {
+                color: 'white',
+            },
+            headerTintColor: '#fff',
+        }}
     >
-        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Order Type" component={OrderTypeScreen}/>
         <Stack.Screen name="Choose Location" component={LocationScreen}/>
         <Stack.Screen name="Menu" component={MenuScreen}/>

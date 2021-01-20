@@ -21,15 +21,15 @@ const MenuScreen =  props => {
       <View style={styles.container}>
         <View style={styles.profile}>
           <Image source={{ uri : picture.thumbnail}} style={styles.image} />
-          <View style={styles.profileText}> 
-            <Text> Name: {name.first} {name.last} </Text>
-            <Text> City: {location.city} </Text>
-            <Text> State: {location.state} </Text>
-            <Text> Country: {location.country} </Text>
+          <View style={styles.profileMeta}> 
+            <Text style={styles.profileText}> Name: {name.first} {name.last} </Text>
+            <Text style={styles.profileText}> City: {location.city} </Text>
+            <Text style={styles.profileText}> State: {location.state} </Text>
+            <Text style={styles.profileText}> Country: {location.country} </Text>
           </View>
         </View>
-        <Text> Email: {email} </Text>
-        <Text> Phone: {cell} </Text>
+        <Text style={styles.description}> Email: {email} </Text>
+        <Text style={styles.description}> Phone: {cell} </Text>
         <FlatList
           data={categories}
           renderItem={({ item }) => (
@@ -53,16 +53,20 @@ const MenuScreen =  props => {
             </TouchableOpacity>)}
           keyExtractor={item => item.name}
         />
-      </View>
-      <Button
-        title="Review Basket"
+    </View>
+    <View style={styles.bottomButton}>
+      <TouchableOpacity
+        activeOpacity={0.7}
         onPress = {()=> props.navigation.navigate("Basket", {
           location: props.route.params.location,
           orderType: props.route.params.orderType,
           when: props.route.params.when,
           basket: basket,
         })}
-      />
+      >
+        <Text style={styles.buttomButtonText}>Review Basket</Text>
+      </TouchableOpacity>
+    </View>
     </SafeAreaView>
   )
 };
@@ -80,11 +84,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   profile: {
+    marginVertical: 10,
     flexDirection: 'row',
-    marginBottom: 10,
   },
-  profileText:{
+  profileMeta: {
+    marginLeft: 10,
     justifyContent: 'center',
+  },
+  profileText: {
+    fontSize: 20,
+  },
+  description: {
+    fontSize: 15,
   },
   image: {
     width: 100,
@@ -92,10 +103,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   listItem: {
-    // marginTop: 10,
-    paddingVertical: 5,
-    // paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    paddingTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -108,7 +116,20 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 25,
     width: 200,
-    padding: 10
+    paddingHorizontal: 20,
+  },
+  buttomButtonText:{
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'white',
+  },
+  bottomButton: {
+    alignSelf: 'center',
+    marginBottom: 10,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    width: '80%',
+    paddingVertical: '3%',
   },
 });
 

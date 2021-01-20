@@ -6,9 +6,9 @@ const GeneralFeedbackScreen = props => {
   return <SafeAreaView style={styles.SafeAreaContainer}>
     <View style={styles.container}>
         <Text style={styles.title}>Feedback Summary</Text>
-        <Text>What: {feedback1}</Text>
-        <Text>Why: {feedback2}</Text>
-        {entry? <Text>Location: {entry.location.city}</Text> : null}
+        <Text style={styles.text}>What: {feedback1}</Text>
+        <Text style={styles.text}>Why: {feedback2}</Text>
+        {entry? <Text style={styles.text}>Location: {entry.location.city}</Text> : null}
         <Text style={styles.title}>Contact Info</Text>
         <TextInput
           placeholder={'Full Name'}
@@ -22,6 +22,7 @@ const GeneralFeedbackScreen = props => {
         <TextInput
           placeholder={'What\'s on your mind'}
           multiline={true}
+          style={styles.input}
         />
     </View>
     <Button
@@ -46,18 +47,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   container: {
-    backgroundColor: '#fff',
     flexDirection: 'column',
+    marginHorizontal: 20,
   },
   input: {
-    width: 250,
-    height: 40,
+    fontSize: 20,
     padding: 10,
     borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 10,
-  },
+    marginVertical: 10,
+},
   title: {
     fontWeight: 'bold',
-  }
+    fontSize: 25,
+    marginVertical: 10,
+  },
+  text: {
+    fontSize: 20,
+  },
 });

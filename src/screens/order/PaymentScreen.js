@@ -9,16 +9,21 @@ const PaymentScreen = (props) => {
         <View style={styles.container}>
             <TouchableOpacity
                 activeOpacity={0.7}
-                onPress={() => setCreditCardVisiblity(!showCreditCard)}
+                onPress={() => setCreditCardVisiblity(true)}
             >
                 <View style={styles.row}>
                     <Text style={styles.text}>Pay by Credit Card</Text>
                 </View>
             </TouchableOpacity>
-            <View style={styles.row}>
-                <Text style={styles.text}>Pay by Cash</Text>
-            </View>
-            {(showCreditCard)? <View style={styles.creditCardContainer}>
+            <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setCreditCardVisiblity(false)}
+            >
+                <View style={styles.row}>
+                    <Text style={styles.text}>Pay by Cash</Text>
+                </View>
+            </TouchableOpacity>
+            {(showCreditCard)? <View>
                 <TextInput
                     style={styles.input}
                     placeholder="Country"
@@ -50,9 +55,13 @@ const PaymentScreen = (props) => {
                 <Text style={styles.text}>Total Due</Text>
                 <Text style={styles.text}>$ {props.route.params.total.toFixed(2)}</Text>
             </View>
-            <Button
-                title="Continue"
-            />
+            <View style={styles.bottomButton}>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                >
+                    <Text style={styles.buttomButtonText}>Continue</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     </SafeAreaView>);
 };
@@ -77,17 +86,17 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     input: {
-        width: 300,
-        height: 40,
+        fontSize: 20,
         padding: 10,
         borderWidth: 1,
         borderColor: 'black',
-        marginBottom: 10,
+        marginVertical: 10,
     },
     row: {
         flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 10,
     },
     title: {
         fontWeight: 'bold',
@@ -97,11 +106,17 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
     },
-    creditCardContainer: {
-        flexDirection: 'column', 
-        backgroundColor: '#fff',
-        marginHorizontal: 20,
+    buttomButtonText:{
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: 'white',
+    },
+    bottomButton: {
+        alignSelf: 'center',
+        marginVertical: 10,
+        backgroundColor: 'red',
         alignItems: 'center',
-        marginTop: 50,
+        width: '80%',
+        paddingVertical: '3%',
     },
 });

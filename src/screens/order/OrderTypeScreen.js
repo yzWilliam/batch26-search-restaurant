@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { SafeAreaView, StyleSheet, Button, Text,
-  View, TextInput, TouchableOpacity, } from "react-native";
+import { SafeAreaView, StyleSheet, Text,
+  View, TextInput, TouchableOpacity, Image, } from "react-native";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import CheckboxFormX from 'react-native-checkbox-form';
 import ActionSheet from 'react-native-actionsheet';
@@ -60,7 +60,13 @@ const OrderTypeScreen = props => {
     render() {
       return (
         <View style={styles.row}>
-          <Text style={styles.text}>Order Type:</Text>
+          <View style={styles.innerRow}>
+            <Image
+              source={{ uri: 'https://i.postimg.cc/tRfVwg1Z/tick.png' }}
+              style={styles.icon}
+            />
+            <Text style={styles.text}> Order Type:</Text>
+          </View>
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={this.showActionSheet}
@@ -86,7 +92,13 @@ const OrderTypeScreen = props => {
     render() {
       return (
         <View style={styles.row}>
-          <Text style={styles.text}>When:</Text>
+          <View style={styles.innerRow}>
+            <Image
+              source={{ uri: 'https://i.postimg.cc/q7R3W6GK/clock.png' }}
+              style={styles.icon}
+            />
+            <Text style={styles.text}> When:</Text>
+          </View>    
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={this.showActionSheet}
@@ -110,43 +122,41 @@ const OrderTypeScreen = props => {
 
   return (<SafeAreaView style={styles.safeAreaContainer}>
     <View style={styles.container}>
-      <Text style={styles.text}>How do you want your order?</Text>
+      <Text style={styles.title}>How do you want your order?</Text>
       <OrderTypeActionSheet/>
       <WhenActionSheet/>
 
       { showDelivery? ( <View style={styles.deliveryContainer}>
-        <Text style={styles.text}>Provide a delivery address</Text>
-        <View style={styles.contactless}>
-          <Text style={styles.contactlessTitle}>We Now Offer Contactless Deliveries</Text>
-          <Text>Minimize contact with your delivery person by</Text>
-          <Text>selecting "I want contactless delivery" when</Text>
-          <Text>adding a new address.</Text>
-        </View>
+        <Text style={styles.title}>Provide a delivery address</Text>
         <TextInput
         style={styles.input}
         placeholder="Street Address"
         />
-         <TextInput
+        <TextInput
         style={styles.input}
         placeholder="Building Name/Suite/Apt"
         /> 
-         <TextInput
+        <TextInput
         style={styles.input}
         placeholder="City"
+        />
+        <TextInput
+        style={styles.input}
+        placeholder="State"
         /> 
-         <TextInput
+        <TextInput
         style={styles.input}
         placeholder="Zip Code"
         /> 
-         <TextInput
+        <TextInput
         style={styles.input}
         placeholder="Delivery Instructions (22 Character Limit)"
         /> 
         <CheckboxFormX 
           dataSource={[{label: 'I want contactless delivery', value: false}]}
           itemShowKey='label'
-          itemCheckedKey='checked'
-          iconSize={16}
+          itemCheckedKey='value'
+          iconSize={20}
           formHorizontal={false}
           labelHorizontal={true}
         />
@@ -158,13 +168,18 @@ const OrderTypeScreen = props => {
       onConfirm={handleConfirm}
       onCancel={() => setDatePickerVisibility(false)}
     />
-    <Button
-      title="Search for Locations"
-      onPress = {() => props.navigation.navigate("Choose Location", {
-        orderType: orderType,
-        when: when,
-      })}
-    />
+    <View style={styles.bottomButton}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress = {() => props.navigation.navigate("Choose Location", {
+          orderType: orderType,
+          when: when,
+        })}
+      >
+        <Text style={styles.buttomButtonText}>Search for Locations</Text>
+      </TouchableOpacity>
+    </View>
+    
     </SafeAreaView>
   )
 };
@@ -183,74 +198,47 @@ const styles = StyleSheet.create({
   },
   deliveryContainer: {
     flexDirection: 'column', 
-    backgroundColor: '#fff',
-    marginHorizontal: 20,
-    alignItems: 'center',
     marginTop: 10,
   },
-  contactless: {
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  contactlessTitle: {
-    color: 'red',
-    fontSize: 20,
-  },
   input: {
-    width: 300,
-    height: 40,
+    fontSize: 20,
     padding: 10,
     borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 10,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
-  },
-  openButton: {
-    backgroundColor: "#F194FF",
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
+    marginVertical: 10,
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  innerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    width: 30,
+    height: 30,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
   },
   text: {
     fontSize: 20,
   },
-  title: {
+  buttomButtonText:{
     fontWeight: 'bold',
-    fontSize: 25,
-    marginVertical: 10,
+    fontSize: 20,
+    color: 'white',
+  },
+  bottomButton: {
+    alignSelf: 'center',
+    marginBottom: 10,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    width: '80%',
+    paddingVertical: '3%',
   },
 });

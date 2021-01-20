@@ -29,8 +29,9 @@ const ItemScreen = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      {(index > -1)? <Button
-        title="Update Item"
+      {(index > -1)? <View style={styles.bottomButton}>
+      <TouchableOpacity
+        activeOpacity={0.7}
         onPress = {() => {
           basket[index].quantity = quantity;
           props.navigation.navigate('Basket', {
@@ -41,8 +42,12 @@ const ItemScreen = (props) => {
             update: true,
           });
         }}
-      />: <Button
-        title="Add to Basket"
+      >
+        <Text style={styles.buttomButtonText}>Update Item</Text>
+      </TouchableOpacity>
+    </View> : <View style={styles.bottomButton}>
+      <TouchableOpacity
+        activeOpacity={0.7}
         onPress = {() => {
           basket.push({name, price, calories, quantity});
           props.navigation.navigate('Menu', {
@@ -52,7 +57,10 @@ const ItemScreen = (props) => {
             basket: JSON.stringify(basket),
           });
         }}
-      />}
+      >
+        <Text style={styles.buttomButtonText}>Add to Basket</Text>
+      </TouchableOpacity>
+    </View>}
     </SafeAreaView>
   )
 };
@@ -88,5 +96,18 @@ const styles = StyleSheet.create({
     },
     button: {
       fontSize: 40,
-    }
+    },
+    buttomButtonText:{
+      fontWeight: 'bold',
+      fontSize: 20,
+      color: 'white',
+    },
+    bottomButton: {
+      alignSelf: 'center',
+      marginBottom: 10,
+      backgroundColor: 'red',
+      alignItems: 'center',
+      width: '80%',
+      paddingVertical: '3%',
+    },
 });

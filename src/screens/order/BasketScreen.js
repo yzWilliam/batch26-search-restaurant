@@ -29,22 +29,26 @@ const BasketScreen = (props) => {
         <View style={styles.container}>
             <View style={styles.profile}>
                 <Image source={{ uri : picture.thumbnail}} style={styles.image} />
-                <View style={styles.profileText}> 
-                    <Text> Name: {name.first} {name.last} </Text>
-                    <Text> City: {location.city} </Text>
-                    <Text> State: {location.state} </Text>
-                    <Text> Country: {location.country} </Text>
+                <View style={styles.profileMeta}> 
+                    <Text style={styles.profileText}> Name: {name.first} {name.last} </Text>
+                    <Text style={styles.profileText}> City: {location.city} </Text>
+                    <Text style={styles.profileText}> State: {location.state} </Text>
+                    <Text style={styles.profileText}> Country: {location.country} </Text>
                 </View>
             </View>
-            <Button
-                title="Add More Items"
+            <View style={styles.bottomButton}>
+              <TouchableOpacity
+                activeOpacity={0.7}
                 onPress={() => props.navigation.navigate("Menu", {
                   basket: JSON.stringify(data),
                   location: props.route.params.location,
                   orderType: orderType,
                   when: when,
                 })}
-            />
+              >
+                <Text style={styles.buttomButtonText}>Add More Items</Text>
+              </TouchableOpacity>
+            </View>
             <View style={styles.row}>
               <Text style={styles.text}>Order Type:</Text>
               <Text style={styles.text}>{orderType}</Text>
@@ -131,12 +135,16 @@ const BasketScreen = (props) => {
               </View>
             </View>
         </View>
-        <Button
-            title="Checkout"
+        <View style={styles.bottomButton}>
+          <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => props.navigation.navigate("Checkout", {
               total: estimatedTotal, 
             })}
-        />
+          >
+            <Text style={styles.buttomButtonText}>Checkout</Text>
+          </TouchableOpacity>
+        </View>
     </SafeAreaView>
     );
 };
@@ -156,12 +164,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   profile: {
+    marginVertical: 10,
     flexDirection: 'row',
-    alignSelf: 'flex-start',
-    marginBottom: 10,
   },
-  profileText:{
+  profileMeta: {
+    marginLeft: 10,
     justifyContent: 'center',
+  },
+  profileText: {
+    fontSize: 20,
   },
   image: {
     width: 100,
@@ -191,5 +202,18 @@ const styles = StyleSheet.create({
   total: {
     marginHorizontal: 20,
     marginVertical: 20,
+  },
+  buttomButtonText:{
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'white',
+  },
+  bottomButton: {
+    alignSelf: 'center',
+    marginBottom: 10,
+    backgroundColor: 'red',
+    alignItems: 'center',
+    width: '80%',
+    paddingVertical: '3%',
   },
 });

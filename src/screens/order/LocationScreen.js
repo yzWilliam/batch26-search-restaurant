@@ -46,7 +46,7 @@ const LocationScreen =  props => {
           value={query}
           onChangeText={queryText => handleSearch(queryText)}
           placeholder="Search"
-          style={{ backgroundColor: '#fff', paddingHorizontal: 20 }}
+          style={styles.searchBar}
         />
       </View>
     );
@@ -155,12 +155,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  searchBar: {
-    backgroundColor: '#fff',
-    padding: 10,
-    marginVertical: 10,
-    borderRadius: 20,
-  },
   scene: {
     flex: 1,
   },
@@ -168,7 +162,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingVertical: 20,
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#DCDCDC',
     flexDirection: 'row'
   },
   coverImage: {
@@ -177,12 +171,19 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   metaInfo: {
-    marginLeft: 10
+    marginLeft: 10,
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     width: 200,
-    padding: 10
+    padding: 10,
+  },
+  searchBar: {
+    backgroundColor: '#DCDCDC',
+    padding: 5,
+    marginVertical: 5,
+    borderRadius: 10,
   },
 });
 
