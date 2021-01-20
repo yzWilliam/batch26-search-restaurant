@@ -24,7 +24,8 @@
       <a href="#screenshots">Screenshots</a>
       <ul>
         <li>
-          <a href="#basic-functions">Basic Functions</a>
+          <a href="#basic-features">Basic Features</a>
+           <ul><li><a href="#splash-screen">Splash Screen</a></li></ul>
           <ul><li><a href="#home-screen">Home Screen</a></li></ul>
           <ul><li><a href="#side-menu">Side Menu</a></li></ul>
           <ul><li><a href="#login-screens">Login Screens</a></li></ul>
@@ -67,15 +68,19 @@ This mobile app supports both the iOS and Android platforms.
 
 ## Screenshots
 
-### Basic Functions
+### Basic Features
+
+#### Splash Screen
+
+[![splash.png](https://i.postimg.cc/BQ1LWpg3/splash.png)](https://postimg.cc/6yt5ndgb)
 
 #### Home Screen
 
-[![home-screen.png](https://i.postimg.cc/4dc2MTDk/home-screen.png)](https://postimg.cc/VrYFr2sD)
+[![home.png](https://i.postimg.cc/NjqyQXJH/home.png)](https://postimg.cc/8j4kH7Vp)
 
 #### Side Menu
 
-[![side-menu.png](https://i.postimg.cc/T2rHJfjn/side-menu.png)](https://postimg.cc/xq1R0r4d)
+[![side-menu.png](https://i.postimg.cc/qqWNh6pW/side-menu.png)](https://postimg.cc/CnHh91B4)
 
 #### Login Screens
 
@@ -88,7 +93,7 @@ This mobile app supports both the iOS and Android platforms.
 [![feedback-screen-1.png](https://i.postimg.cc/DynpCH5H/feedback-screen-1.png)](https://postimg.cc/rzZ9shBN)
 [![feedback-screen-2.png](https://i.postimg.cc/7ZLs4zFN/feedback-screen-2.png)](https://postimg.cc/kBkFF2XV)
 [![feedback-screen-3.png](https://i.postimg.cc/jdcgBcF5/feedback-screen-3.png)](https://postimg.cc/4mKQ96Zk)
-[![feedback-screen-summary.png](https://i.postimg.cc/XYD2YJ36/feedback-screen-summary.png)](https://postimg.cc/pmzQ0Pps)
+[![feedback-summary.png](https://i.postimg.cc/Kzvkdy9p/feedback-summary.png)](https://postimg.cc/d7pVygcG)
 
 #### Agreement Screens
 
@@ -99,34 +104,34 @@ This mobile app supports both the iOS and Android platforms.
 
 #### Choosing Order Type
 
-[![order-type-1.png](https://i.postimg.cc/xjc4JhtS/order-type-1.png)](https://postimg.cc/NLv4ZN3N)
-[![order-type-2.png](https://i.postimg.cc/qRYhNPqR/order-type-2.png)](https://postimg.cc/2bQ8JX4R)
-[![order-type-3.png](https://i.postimg.cc/t7Gs5FhG/order-type-3.png)](https://postimg.cc/V04ssrGK)
-[![order-type-4.png](https://i.postimg.cc/7h2C0KJN/order-type-4.png)](https://postimg.cc/D47yKdgW)
-[![order-type-5.png](https://i.postimg.cc/N0drc9wR/order-type-5.png)](https://postimg.cc/KKgY7YjY)
+[![order1.png](https://i.postimg.cc/C1PB06Xh/order1.png)](https://postimg.cc/njmcYTng)
+[![order2.png](https://i.postimg.cc/P5YwDypy/order2.png)](https://postimg.cc/4Y4ykz1H)
+[![order3.png](https://i.postimg.cc/zfkHtfkR/order3.png)](https://postimg.cc/Lqnsh2wH)
+[![order4.png](https://i.postimg.cc/s2zZ4W5r/order4.png)](https://postimg.cc/xXsC0csx)
+[![order5.png](https://i.postimg.cc/X7T5XmJX/order5.png)](https://postimg.cc/tYNJMrFH)
 
 #### Choosing Location
 
-[![location-list.png](https://i.postimg.cc/rsf4Nf80/location-list.png)](https://postimg.cc/p5ny2Y5R)
-[![location-map.png](https://i.postimg.cc/9Fzwjtmb/location-map.png)](https://postimg.cc/F75HySJk)
+[![location.png](https://i.postimg.cc/RhW3ZLxc/location.png)](https://postimg.cc/1VZRW6tt)
+[![map.png](https://i.postimg.cc/MZLMrN1t/map.png)](https://postimg.cc/t7h4srSV)
 
 #### Adding Items to the Basket
 
-[![menu-screen.png](https://i.postimg.cc/nc5jVjMJ/menu-screen.png)](https://postimg.cc/xcvTtdKx)
-[![category-screen.png](https://i.postimg.cc/ZYwvgDS0/category-screen.png)](https://postimg.cc/nMQL92Mt)
-[![item-screen.png](https://i.postimg.cc/9MpwcLw8/item-screen.png)](https://postimg.cc/FdYHZgZ3)
-[![basket-screen.png](https://i.postimg.cc/Y0D4Wj3Q/basket-screen.png)](https://postimg.cc/H85sGYFL)
+[![menu.png](https://i.postimg.cc/BQ8DS4Jd/menu.png)](https://postimg.cc/SJhjV02r)
+[![category.png](https://i.postimg.cc/66bnxyxr/category.png)](https://postimg.cc/Thmpr2w1)
+[![item-add.png](https://i.postimg.cc/YCW13kV1/item-add.png)](https://postimg.cc/18ynRxyt)
+[![basket.png](https://i.postimg.cc/9MJTMfRj/basket.png)](https://postimg.cc/zbH328Fd)
 
 #### Updating Items in the Basket
 
-[![adding-more-items.png](https://i.postimg.cc/d3Vk3G8q/adding-more-items.png)](https://postimg.cc/vgCHSgqj)
-[![applying-coupon.png](https://i.postimg.cc/HLb7hYYC/applying-coupon.png)](https://postimg.cc/VSL6Sc07)
-[![deleting-items.png](https://i.postimg.cc/mgvHjzGw/deleting-items.png)](https://postimg.cc/gxKjk0jX)
-[![deleted.png](https://i.postimg.cc/y8gR0h2x/deleted.png)](https://postimg.cc/3khWTG8Q)
-[![update-item.png](https://i.postimg.cc/SQdc4xWS/update-item.png)](https://postimg.cc/MXcnbxPN)
-[![updated.png](https://i.postimg.cc/B6s1WrbP/updated.png)](https://postimg.cc/mcXrC6QT)
+[![basket2.png](https://i.postimg.cc/7hhzTy0J/basket2.png)](https://postimg.cc/8f8cq9yT)
+[![basket3.png](https://i.postimg.cc/XqPCfDkH/basket3.png)](https://postimg.cc/SYWRqd5C)
+[![basket4.png](https://i.postimg.cc/FR93NSKZ/basket4.png)](https://postimg.cc/B8VXCXHL)
+[![basket5.png](https://i.postimg.cc/yNhcMj7x/basket5.png)](https://postimg.cc/TywKmrLv)
+[![item-update.png](https://i.postimg.cc/SN56CjZS/item-update.png)](https://postimg.cc/7f3JyP8d)
+[![basket6.png](https://i.postimg.cc/Bvf27k9R/basket6.png)](https://postimg.cc/bZLGs6vR)
 
 #### Checking Out
 
-[![checkout.png](https://i.postimg.cc/RVbf3ps2/checkout.png)](https://postimg.cc/hfTh6sq0)
-[![payment.png](https://i.postimg.cc/DyzLw3gq/payment.png)](https://postimg.cc/mh0tmqKD)
+[![checkout.png](https://i.postimg.cc/RVq1WwLp/checkout.png)](https://postimg.cc/hfWQwzwV)
+[![payment.png](https://i.postimg.cc/05Vd5VDJ/payment.png)](https://postimg.cc/MXjjdbsW)
