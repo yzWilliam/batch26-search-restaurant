@@ -63,8 +63,8 @@ This mobile app supports both the iOS and Android platforms.
 
 ## Installation
 
-- [Android APK](https://i.diawi.com/fp4gX7) - Version 1.0.0
-- [iOS IPA](https://drive.google.com/file/d/1FwCzKla6hXHSvVhhMFIBQFWRBhnBAbUq/view?usp=sharing) - Version 1.0.0
+- [Android APK](https://drive.google.com/file/d/1xzS49s4ekJ4TFnlu2f1Cn2YBP2xW7o8l/view?usp=sharing) - Version 1.0.0
+- [iOS IPA](https://drive.google.com/file/d/1YU4T-Nw_HTL2S11QPdzNJR3-NVpG9KOd/view?usp=sharing) - Version 1.0.0
 
 ## Screenshots
 
